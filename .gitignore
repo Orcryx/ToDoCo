@@ -53,3 +53,6 @@ phpstan.neon
 .env.test
 .env.local
 
+
+###< Ne pas modifier les diagrammes pour le reste du projet ###
+/diagrammes
