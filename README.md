@@ -1,0 +1,2 @@
+# ToDoCo
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a2e358cf1daa4ff0b9b7be02f9165762)](https://app.codacy.com/gh/Orcryx/ToDoCo?utm_source=github.com&utm_medium=referral&utm_content=Orcryx/ToDoCo&utm_campaign=Badge_Grade)
