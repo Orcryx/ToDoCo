@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page administrateur
+{% endblock %}
+
+{% block body %}
+	<h1>Page d’administration</h1>
+
+	<details open>
+		<summary>
+			<h2>Utilisateurs</h2>
+		</summary>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>Username</th>
+						<th>Created At</th>
+						<th>Updated At</th>
+						<th>Roles</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.email }}</td>
+							<td>{{ user.username }}</td>
+							<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ user.roles|join(', ') }}</td>
+							<td>
+								<a href="{{ path('app_user_edit', { id: user.id }) }}">Modifier rôles</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Aucun utilisateur trouvé</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</details>
+
+	<details>
+		<summary>
+			<h2>Liste des tâches</h2>
+		</summary>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Content</th>
+						<th>Is Done</th>
+						<th>Created At</th>
+						<th>Updated At</th>
+						<th>Utilisateur</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for task in tasks %}
+						<tr>
+							<td>{{ task.title }}</td>
+							<td>{{ task.content }}</td>
+							<td>{{ task.isDone ? 'Oui' : 'Non' }}</td>
+							<td>{{ task.createdAt ? task.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ task.updatedAt ? task.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{ task.userId ? task.userId.email : '—' }}</td>
+							<td>
+								<a href="{{ path('app_task_show', {'id': task.id}) }}">Voir</a>
+								<a href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucune tâche trouvée</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</details>
+{% endblock %}

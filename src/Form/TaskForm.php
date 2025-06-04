@@ -25,7 +25,7 @@ class TaskForm extends AbstractType
             ])
             ->add('userId', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'username',
             ])
         ;
     }

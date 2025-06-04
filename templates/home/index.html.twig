@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block body %}
-
-	<div class="row">
-		<a href="{{ path('app_task_new') }}" class="btn btn-success">Créer une nouvelle tâche</a>
-		<a href="{{ path('task_list') }}" class="btn btn-info">Consulter la liste des tâches à faire</a>
-		<a href="" class="btn btn-secondary">Consulter la liste des tâches terminées</a>
-	</div>
+	{% if app.user %}
+		<div class="row">
+			<a href="{{ path('app_task_new') }}" class="btn btn-success">Créer une nouvelle tâche</a>
+			<a href="{{ path('user_task_list') }}" class="btn btn-primary">Consulter la liste des tâches à faire</a>
+			<a href="" class="btn btn-info">Consulter la liste des tâches terminées</a>
+			{% if 'ROLE_ADMIN' in app.user.roles %}
+				<a href="{{ path('app_admin') }}" class="btn btn-danger">Accès admin</a>
+			{% endif %}
+		</div>
+	{% endif %}
 {% endblock %}
