@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserRoleForm;
-use App\Repository\UserRepository;
+use App\Form\UserProfileForm;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,38 @@ final class UserController extends AbstractController
         return $this->render('user/edit.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
+        ]);
+    }
+
+    #[Route('/profile', name: 'app_profile')]
+    public function update(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $hasher): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $form = $this->createForm(UserProfileForm::class, $user, [
+            'is_admin' => $this->isGranted('ROLE_ADMIN'),
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Gérer le changement de mot de passe
+            $plainPassword = $form->get('plainPassword')->getData();
+            if ($plainPassword) {
+                $hashed = $hasher->hashPassword($user, $plainPassword);
+                $user->setPassword($hashed);
+            }
+
+            $user->setUpdatedAt(new \DateTimeImmutable());
+            $em->flush();
+
+            $this->addFlash('success', 'Profil mis à jour.');
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('user/update.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
