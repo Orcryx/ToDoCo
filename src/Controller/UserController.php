@@ -3,15 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserRoleForm;
 use App\Form\UserProfileForm;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use App\Form\UserRoleForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
 {
@@ -19,6 +18,7 @@ final class UserController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
         ]);

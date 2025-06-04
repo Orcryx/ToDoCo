@@ -12,15 +12,16 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
+    // private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "Vous devez saisir un titre.")]
+    #[Assert\NotBlank(message: 'Vous devez saisir un titre.')]
     #[Assert\Regex('/^[a-zA-Z]{3,}[a-zA-Z0-9\- ]*$/', message: 'Le titre doit contenir au moins 3 lettres et peut inclure des chiffres et des tirets.')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "Vous devez saisir du contenu.")]
+    #[Assert\NotBlank(message: 'Vous devez saisir du contenu.')]
     private ?string $content = null;
 
     #[ORM\Column]
@@ -115,6 +116,7 @@ class Task
     public function toggle(bool $flag): static
     {
         $this->isDone = $flag;
+
         return $this;
     }
 }

@@ -38,6 +38,7 @@ final class TaskController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
             $this->addFlash('success', 'La tâche a bien été ajoutée.');
+
             return $this->redirectToRoute('user_task_list', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -61,7 +62,6 @@ final class TaskController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas le droit de modifier cette tâche.");
         }
 
-
         $form = $this->createForm(TaskForm::class, $task);
         $form->handleRequest($request);
 
@@ -69,6 +69,7 @@ final class TaskController extends AbstractController
             $task->setUpdatedAt(new \DateTimeImmutable());
             $entityManager->flush();
             $this->addFlash('success', 'La tâche a bien été modifiée.');
+
             return $this->redirectToRoute('user_task_list', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -87,11 +88,12 @@ final class TaskController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas le droit de modifier cette tâche.");
         }
 
-        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
         }
         $this->addFlash('success', 'La tâche a bien été supprimée.');
+
         return $this->redirectToRoute('user_task_list', [], Response::HTTP_SEE_OTHER);
     }
 
