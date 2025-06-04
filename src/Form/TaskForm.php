@@ -16,13 +16,6 @@ class TaskForm extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('isDone')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('userId', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'username',

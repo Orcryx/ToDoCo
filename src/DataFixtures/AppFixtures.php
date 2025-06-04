@@ -2,10 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Task;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\User;
-use App\Entity\Task;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
@@ -19,7 +19,6 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-
         // 🔒 Utilisateur anonyme (pas de mot de passe, pas d'auth)
         $anonymousUser = (new User())
             ->setEmail('anonymous@todo.local')
@@ -45,7 +44,7 @@ class AppFixtures extends Fixture
         // 👥 Utilisateurs
         $users = [];
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 5; ++$i) {
             $user = (new User())
                 ->setEmail("user$i@example.com")
                 ->setUsername("user$i")
@@ -61,7 +60,7 @@ class AppFixtures extends Fixture
 
         // Tâches pour chaque utilisateur
         foreach ($users as $index => $user) {
-            for ($j = 1; $j <= 2; $j++) {
+            for ($j = 1; $j <= 2; ++$j) {
                 $task = (new Task())
                     ->setTitle("Tâche {$j} de {$user->getUsername()}")
                     ->setContent("Contenu de la tâche $j")
@@ -74,7 +73,7 @@ class AppFixtures extends Fixture
         }
 
         //  Tâches anonymes (pas de user affecté ou user = "anonyme")
-        for ($k = 1; $k <= 3; $k++) {
+        for ($k = 1; $k <= 3; ++$k) {
             $task = (new Task())
                 ->setTitle("Tâche anonyme $k")
                 ->setContent("Tâche $k sans utilisateur connecté")
