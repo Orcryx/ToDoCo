@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier les rôles de
+		{{ user.email }}</h1>
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button type="submit">Enregistrer</button>
+	{{ form_end(form) }}
+
+	<a href="{{ path('app_admin') }}">← Retour à la liste</a>
+{% endblock %}
