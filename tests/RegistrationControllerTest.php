@@ -45,13 +45,13 @@ class RegistrationControllerTest extends WebTestCase
         ]);
 
         // Ensure the response redirects after submitting the form, the user exists, and is not verified
-        // self::assertResponseRedirects('/');  @TODO: set the appropriate path that the user is redirected to.
+        // Self::assertResponseRedirects('/');  @TODO: set the appropriate path that the user is redirected to.
         self::assertCount(1, $this->userRepository->findAll());
         self::assertFalse(($user = $this->userRepository->findAll()[0])->isVerified());
 
         // Ensure the verification email was sent
         // Use either assertQueuedEmailCount() || assertEmailCount() depending on your mailer setup
-        // self::assertQueuedEmailCount(1);
+        // Self::assertQueuedEmailCount(1);
         self::assertEmailCount(1);
 
         self::assertCount(1, $messages = $this->getMailerMessages());

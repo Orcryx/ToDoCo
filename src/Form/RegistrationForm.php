@@ -38,21 +38,25 @@ class RegistrationForm extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                'label' => 'Mot de passe',
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe.',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères.',
-                        'max' => 4096,
-                    ]),
-                ],
-            ]);
+            ->add(
+                'plainPassword',
+                PasswordType::class,
+                [
+                    'label' => 'Mot de passe',
+                    'mapped' => false,
+                    'attr' => ['autocomplete' => 'new-password'],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez entrer un mot de passe.',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères.',
+                            'max' => 4096,
+                        ]),
+                    ],
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
