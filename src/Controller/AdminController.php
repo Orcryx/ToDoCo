@@ -15,7 +15,8 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function index(UserRepository $userRepository, TaskRepository $taskRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN'); // sécurité d'accès
+        // Sécurité d'accès
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $users = $userRepository->findAll();
         $tasks = $taskRepository->findAll();

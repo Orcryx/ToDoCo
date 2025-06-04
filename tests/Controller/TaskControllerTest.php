@@ -37,107 +37,107 @@ final class TaskControllerTest extends WebTestCase
         self::assertPageTitleContains('Task index');
 
         // Use the $crawler to perform additional assertions e.g.
-        // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
+        // Self::assertSame('Some text on the page', $crawler->filter('.p')->first());
     }
 
-    public function testNew(): void
-    {
-        $this->markTestIncomplete();
-        $this->client->request('GET', sprintf('%snew', $this->path));
+    // public function testNew(): void
+    // {
+    //     $this->markTestIncomplete();
+    //     $this->client->request('GET', sprintf('%snew', $this->path));
 
-        self::assertResponseStatusCodeSame(200);
+    //     self::assertResponseStatusCodeSame(200);
 
-        $this->client->submitForm('Save', [
-            'task[title]' => 'Testing',
-            'task[content]' => 'Testing',
-            'task[isDone]' => 'Testing',
-            'task[createdAt]' => 'Testing',
-            'task[updatedAt]' => 'Testing',
-            'task[userId]' => 'Testing',
-        ]);
+    //     $this->client->submitForm('Save', [
+    //         'task[title]' => 'Testing',
+    //         'task[content]' => 'Testing',
+    //         'task[isDone]' => 'Testing',
+    //         'task[createdAt]' => 'Testing',
+    //         'task[updatedAt]' => 'Testing',
+    //         'task[userId]' => 'Testing',
+    //     ]);
 
-        self::assertResponseRedirects($this->path);
+    //     self::assertResponseRedirects($this->path);
 
-        self::assertSame(1, $this->taskRepository->count([]));
-    }
+    //     self::assertSame(1, $this->taskRepository->count([]));
+    // }
 
-    public function testShow(): void
-    {
-        $this->markTestIncomplete();
-        $fixture = new Task();
-        $fixture->setTitle('My Title');
-        $fixture->setContent('My Title');
-        $fixture->setIsDone('My Title');
-        $fixture->setCreatedAt('My Title');
-        $fixture->setUpdatedAt('My Title');
-        $fixture->setUserId('My Title');
+    // public function testShow(): void
+    // {
+    //     $this->markTestIncomplete();
+    //     $fixture = new Task();
+    //     $fixture->setTitle('My Title');
+    //     $fixture->setContent('My Title');
+    //     $fixture->setIsDone('My Title');
+    //     $fixture->setCreatedAt('My Title');
+    //     $fixture->setUpdatedAt('My Title');
+    //     $fixture->setUserId('My Title');
 
-        $this->manager->persist($fixture);
-        $this->manager->flush();
+    //     $this->manager->persist($fixture);
+    //     $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
+    //     $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
 
-        self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Task');
+    //     self::assertResponseStatusCodeSame(200);
+    //     self::assertPageTitleContains('Task');
 
-        // Use assertions to check that the properties are properly displayed.
-    }
+    //     // Use assertions to check that the properties are properly displayed.
+    // }
 
-    public function testEdit(): void
-    {
-        $this->markTestIncomplete();
-        $fixture = new Task();
-        $fixture->setTitle('Value');
-        $fixture->setContent('Value');
-        $fixture->setIsDone('Value');
-        $fixture->setCreatedAt('Value');
-        $fixture->setUpdatedAt('Value');
-        $fixture->setUserId('Value');
+    // public function testEdit(): void
+    // {
+    //     $this->markTestIncomplete();
+    //     $fixture = new Task();
+    //     $fixture->setTitle('Value');
+    //     $fixture->setContent('Value');
+    //     $fixture->setIsDone('Value');
+    //     $fixture->setCreatedAt('Value');
+    //     $fixture->setUpdatedAt('Value');
+    //     $fixture->setUserId('Value');
 
-        $this->manager->persist($fixture);
-        $this->manager->flush();
+    //     $this->manager->persist($fixture);
+    //     $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
+    //     $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
-        $this->client->submitForm('Update', [
-            'task[title]' => 'Something New',
-            'task[content]' => 'Something New',
-            'task[isDone]' => 'Something New',
-            'task[createdAt]' => 'Something New',
-            'task[updatedAt]' => 'Something New',
-            'task[userId]' => 'Something New',
-        ]);
+    //     $this->client->submitForm('Update', [
+    //         'task[title]' => 'Something New',
+    //         'task[content]' => 'Something New',
+    //         'task[isDone]' => 'Something New',
+    //         'task[createdAt]' => 'Something New',
+    //         'task[updatedAt]' => 'Something New',
+    //         'task[userId]' => 'Something New',
+    //     ]);
 
-        self::assertResponseRedirects('/task/');
+    //     self::assertResponseRedirects('/task/');
 
-        $fixture = $this->taskRepository->findAll();
+    //     $fixture = $this->taskRepository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getTitle());
-        self::assertSame('Something New', $fixture[0]->getContent());
-        self::assertSame('Something New', $fixture[0]->getIsDone());
-        self::assertSame('Something New', $fixture[0]->getCreatedAt());
-        self::assertSame('Something New', $fixture[0]->getUpdatedAt());
-        self::assertSame('Something New', $fixture[0]->getUserId());
-    }
+    //     self::assertSame('Something New', $fixture[0]->getTitle());
+    //     self::assertSame('Something New', $fixture[0]->getContent());
+    //     self::assertSame('Something New', $fixture[0]->getIsDone());
+    //     self::assertSame('Something New', $fixture[0]->getCreatedAt());
+    //     self::assertSame('Something New', $fixture[0]->getUpdatedAt());
+    //     self::assertSame('Something New', $fixture[0]->getUserId());
+    // }
 
-    public function testRemove(): void
-    {
-        $this->markTestIncomplete();
-        $fixture = new Task();
-        $fixture->setTitle('Value');
-        $fixture->setContent('Value');
-        $fixture->setIsDone('Value');
-        $fixture->setCreatedAt('Value');
-        $fixture->setUpdatedAt('Value');
-        $fixture->setUserId('Value');
+    // public function testRemove(): void
+    // {
+    //     $this->markTestIncomplete();
+    //     $fixture = new Task();
+    //     $fixture->setTitle('Value');
+    //     $fixture->setContent('Value');
+    //     $fixture->setIsDone('Value');
+    //     $fixture->setCreatedAt('Value');
+    //     $fixture->setUpdatedAt('Value');
+    //     $fixture->setUserId('Value');
 
-        $this->manager->persist($fixture);
-        $this->manager->flush();
+    //     $this->manager->persist($fixture);
+    //     $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+    //     $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
+    //     $this->client->submitForm('Delete');
 
-        self::assertResponseRedirects('/task/');
-        self::assertSame(0, $this->taskRepository->count([]));
-    }
+    //     self::assertResponseRedirects('/task/');
+    //     self::assertSame(0, $this->taskRepository->count([]));
+    // }
 }

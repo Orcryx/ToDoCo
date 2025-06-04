@@ -19,14 +19,14 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // 🔒 Utilisateur anonyme (pas de mot de passe, pas d'auth)
+        // Utilisateur anonyme (pas de mot de passe, pas d'auth)
         $anonymousUser = (new User())
             ->setEmail('anonymous@todo.local')
             ->setUsername('Anonyme')
-            ->setRoles(['ROLE_USER']) // aucun rôle
+            ->setRoles(['ROLE_USER'])
             ->setCreatedAt(new \DateTimeImmutable())
             ->setUpdatedAt(new \DateTimeImmutable())
-            ->setPassword(''); // vide, inutilisable
+            ->setPassword('');
         $manager->persist($anonymousUser);
 
         // Créer un utilisateur admin
@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
         );
         $manager->persist($admin);
 
-        // 👥 Utilisateurs
+        // Utilisateurs
         $users = [];
 
         for ($i = 1; $i <= 5; ++$i) {
@@ -80,7 +80,7 @@ class AppFixtures extends Fixture
                 ->setIsDone(false)
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setUpdatedAt(new \DateTimeImmutable())
-                ->setUserId($anonymousUser); // ou null si tu veux sans user
+                ->setUserId($anonymousUser);
             $manager->persist($task);
         }
 

@@ -7,7 +7,6 @@ use App\Form\RegistrationForm;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,11 +16,9 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-class RegistrationController extends AbstractController
+class RegistrationController extends ToDoAbstractController
 {
-    public function __construct(private EmailVerifier $emailVerifier)
-    {
-    }
+    public function __construct(private EmailVerifier $emailVerifier) {}
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
@@ -34,7 +31,7 @@ class RegistrationController extends AbstractController
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
-            // encode the plain password
+            // Encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
             $user->setRoles(['ROLE_USER']);
             $user->setCreatedAt(new \DateTimeImmutable());
@@ -43,7 +40,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
+            // Generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
                 $user,
@@ -54,7 +51,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            // do anything else you need here, like send an email
+            // Do anything else you need here, like send an email
 
             return $security->login($user, 'form_login', 'main');
         }
@@ -69,7 +66,7 @@ class RegistrationController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
+        // Validate email confirmation link, sets User::isVerified=true and persists
         try {
             /** @var User $user */
             $user = $this->getUser();
