@@ -1,0 +1,77 @@
+PHPUnit 9.6.23 by Sebastian Bergmann and contributors.
+
+Testing 
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.157, Memory: 26.00 MB
+
+There was 1 failure:
+
+1) App\Tests\Functionel\SecurityControllerTest::testAppLogoutIsUp
+Failed asserting that Symfony\Component\HttpFoundation\RedirectResponse Object &00000000000003250000000000000000 (
+    'headers' => Symfony\Component\HttpFoundation\ResponseHeaderBag Object &00000000000003700000000000000000 (
+        'headers' => Array &0 (
+            'cache-control' => Array &1 (
+                0 => 'max-age=0, must-revalidate, private'
+            )
+            'date' => Array &2 (
+                0 => 'Wed, 11 Jun 2025 11:41:40 GMT'
+            )
+            'location' => Array &3 (
+                0 => 'http://localhost/'
+            )
+            'content-type' => Array &4 (
+                0 => 'text/html; charset=utf-8'
+            )
+            'x-robots-tag' => Array &5 (
+                0 => 'noindex'
+            )
+            'expires' => Array &6 (
+                0 => 'Wed, 11 Jun 2025 11:41:40 GMT'
+            )
+        )
+        'cacheControl' => Array &7 (
+            'max-age' => '0'
+            'must-revalidate' => true
+            'private' => true
+        )
+        'computedCacheControl' => Array &8 (
+            'max-age' => '0'
+            'must-revalidate' => true
+            'private' => true
+        )
+        'cookies' => Array &9 ()
+        'headerNames' => Array &10 (
+            'cache-control' => 'Cache-Control'
+            'date' => 'Date'
+            'location' => 'Location'
+            'content-type' => 'Content-Type'
+            'x-robots-tag' => 'X-Robots-Tag'
+            'expires' => 'Expires'
+        )
+    )
+    'content' => '<!DOCTYPE html>\n
+<html>\n
+    <head>\n
+        <meta charset="UTF-8" />\n
+        <meta http-equiv="refresh" content="0;url='http://localhost/'" />\n
+\n
+        <title>Redirecting to http://localhost/</title>\n
+    </head>\n
+    <body>\n
+        Redirecting to <a href="http://localhost/">http://localhost/</a>.\n
+    </body>\n
+</html>'
+    'version' => '1.1'
+    'statusCode' => 302
+    'statusText' => 'Found'
+    'charset' => 'UTF-8'
+    'targetUrl' => 'http://localhost/'
+) is redirected and has header "Location" matching "app_home".
+
+/home/orcryx/Bureau/OpenClassRooms/ToDoCo/vendor/symfony/framework-bundle/Test/BrowserKitAssertionsTrait.php:148
+/home/orcryx/Bureau/OpenClassRooms/ToDoCo/vendor/symfony/framework-bundle/Test/BrowserKitAssertionsTrait.php:62
+/home/orcryx/Bureau/OpenClassRooms/ToDoCo/tests/Fonctionnel/SecurityControllerTest.php:50
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.

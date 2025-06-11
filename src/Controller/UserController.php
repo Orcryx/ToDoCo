@@ -27,6 +27,7 @@ final class UserController extends AbstractController
     #[Route('/user/{id}/edit', name: 'app_user_edit')]
     public function edit(User $user, Request $request, EntityManagerInterface $em): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(UserRoleForm::class, $user);
         $form->handleRequest($request);
 

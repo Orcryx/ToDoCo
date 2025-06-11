@@ -10,11 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted as AttributeIsGranted;
 
 #[Route('/task')]
 final class TaskController extends AbstractController
 {
     #[Route('all/task', name: 'task_list', methods: ['GET'])]
+    #[AttributeIsGranted('ROLE_ADMIN')]
     public function index(TaskRepository $taskRepository): Response
     {
         return $this->render('task/index.html.twig', [
@@ -88,7 +90,7 @@ final class TaskController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas le droit de modifier cette tâche.");
         }
 
-        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
         }
