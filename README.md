@@ -1,16 +1,28 @@
 # ToDoCo
-# BileMo
+# ToDoCo
 
 Présentation
-Dépôt Git de BileMo.
+Dépôt Git de ToDoCo.
 
-Ce projet est le septième projet de la formation Développeur d'application - PHP/Symfony.
+Vous venez d’intégrer une startup dont le cœur de métier est une application permettant de gérer ses tâches quotidiennes. L’entreprise vient tout juste d’être montée, et l’application a dû être développée à toute vitesse pour permettre de montrer à de potentiels investisseurs que le concept est viable (on parle de Minimum Viable Product ou MVP).
 
-BileMo est une entreprise offrant toute une sélection de téléphones mobiles haut de gamme.
+Le choix du développeur précédent a été d’utiliser le framework PHP Symfony, un framework que vous commencez à bien connaître ! 
 
-Je suis en charge du développement de la vitrine de téléphones mobiles de l’entreprise BileMo. Le business modèle de BileMo n’est pas de vendre directement ses produits sur le site web, mais de fournir à toutes les plateformes qui le souhaitent l’accès au catalogue via une API (Application Programming Interface). Il s’agit donc de vente exclusivement en B2B (business to business).
+Bonne nouvelle ! ToDo & Co a enfin réussi à lever des fonds pour permettre le développement de l’entreprise et surtout de l’application.
 
-Il va falloir que j'expose un certain nombre d’API pour que les applications des autres plateformes web puissent effectuer des opérations.
+Votre rôle ici est donc d’améliorer la qualité de l’application. La qualité est un concept qui englobe bon nombre de sujets : on parle souvent de qualité de code, mais il y a également la qualité perçue par l’utilisateur de l’application ou encore la qualité perçue par les collaborateurs de l’entreprise, et enfin la qualité que vous percevez lorsqu’il vous faut travailler sur le projet.
+
+Ainsi, pour ce dernier projet de spécialisation, vous êtes dans la peau d’un développeur expérimenté en charge des tâches suivantes :
+
+    l’implémentation de nouvelles fonctionnalités ;
+    la correction de quelques anomalies ;
+    et l’implémentation de tests automatisés.
+
+Il vous est également demandé d’analyser le projet grâce à des outils vous permettant d’avoir une vision d’ensemble de la qualité du code et des différents axes de performance de l’application.
+
+Il ne vous est pas demandé de corriger les points remontés par l’audit de qualité de code et de performance. Cela dit, si le temps vous le permet, ToDo & Co sera ravi que vous réduisiez la dette technique de cette application.
+
+[Projet](https://openclassrooms.com/fr/paths/500/projects/44/assignment)
 
 
 ## 🧭 Table des matières
@@ -30,31 +42,42 @@ Il va falloir que j'expose un certain nombre d’API pour que les applications d
 -   Une BDD (par exemple DBeaver)
 -   MySQL : Version recommandée : 8.0.19 ou plus récent.
 -   Serveur local : Apache ou un serveur équivalent pour exécuter l’application en local.
-
 ---
 
 ## ⚙️ Installation
 
 1. **Cloner le dépôt :** 
+
  - Clonez ce dépôt sur votre machine locale.
 
 2. **Accéder au dossier du projet :**
+
     ```bash
+
     - cd projects/
-    - git clone ...
+    - git clone 
+    
+    ...
 
 3. **Installer les dépendances avec Composer :**
+
     ```bash
+
     - composer install
 
 4. **Installer symfony (voir composer.json)**
+
     ```bash
+
     - cd my-project/
     - composer install
 
 5. **Variables d'environnement** 
+
     Si nécessaire, créer le fichier .env.local (et .env.test) et compléter la value pour la liste des variables suivantes : 
+
     ```bash
+
     DB_USER=""
     DB_PASSWORD=""
     DB_HOST=""
@@ -66,10 +89,14 @@ Il va falloir que j'expose un certain nombre d’API pour que les applications d
     DATABASE_URL="mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?serverVersion=${DB_SERVER_VERSION}&charset=${DB_CHARSET}"
 
 6. **Fixtures & Migrations**
+
     Effectuer la migrations puis installer les fixtures
+
     ```bash
+
     php bin/console doctrine:migrations:migrate
     php bin/console doctrine:fixtures:load
+    
 ---
 
 ## Documentation

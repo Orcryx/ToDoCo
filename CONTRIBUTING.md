@@ -31,9 +31,10 @@ Les tests unitaires et fonctionnels sont implémentés avec PHPunit. Pour lancer
 ```php bin/phpunit --coverage-html var/coverage
 ```
 
-### Intégration continue
+## Intégration continue
 
 -   Si nécessaire, créer le fichier .env.local (et .env.test) et compléter la value pour la liste des variables suivantes : 
+
     ```
     DB_USER=""
     DB_PASSWORD=""
@@ -45,18 +46,21 @@ Les tests unitaires et fonctionnels sont implémentés avec PHPunit. Pour lancer
 
     DATABASE_URL="mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?serverVersion=${DB_SERVER_VERSION}&charset=${DB_CHARSET}"
     ```
+
 - La couverture du code est supérieure à 70 %. Veuillez garantir ce niveau élevé de couverture des tests.
 
-#### PHPUnit en Local
+## PHPUnit en Local
 
 - Nous vous recommandons fortement de tester votre code localement avant de le pousser vers le référentiel.
 - Pour exécuter des tests sur votre machine locale, vous avez besoin d'une base de données de test.
+
  ```
   php bin/console doctrine:database:drop --force --env=test
   php bin/console doctrine:database:create --env=test
   php bin/console doctrine:migrations:migrate --no-interaction --env=test
   php bin/console doctrine:fixtures:load --no-interaction --env=test
  ```
+
 - Créez un fichier « .env.test.local » dans lequel vous pouvez configurer votre variable d’environnement DATABASE_URL avec vos informations d’identification de base de données locale.
 
 - Pour obtenir un rapport de couverture de code, ouvrez avec votre navigateur le fichier : /var/coverage/index.html
