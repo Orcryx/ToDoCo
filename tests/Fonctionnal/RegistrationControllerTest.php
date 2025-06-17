@@ -17,21 +17,6 @@ class RegistrationControllerTest extends WebTestCase
         $this->client = static::createClient();
     }
 
-    // private function loginAs(string $email): void
-    // {
-    //     $userRepository = $this->client->getContainer()
-    //         ->get('doctrine.orm.entity_manager')
-    //         ->getRepository(User::class);
-
-    //     $user = $userRepository->findOneByEmail($email);
-
-    //     if (!$user) {
-    //         throw new \RuntimeException("L'utilisateur avec l'email $email n'existe pas.");
-    //     }
-
-    //     $this->client->loginUser($user);
-    // }
-
     public function testAppRegisterIsUp(): void
     {
         $urlGenerator = $this->client->getContainer()->get('router.default');

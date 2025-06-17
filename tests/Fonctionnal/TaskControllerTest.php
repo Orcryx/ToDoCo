@@ -67,7 +67,7 @@ class TaskControllerTest extends WebTestCase
         $this->loginAs('user1@example.com');
         $urlGenerator = $this->client->getContainer()->get('router.default');
 
-        $crawler = $this->client->request('GET', $urlGenerator->generate('app_task_new'));
+        $this->client->request('GET', $urlGenerator->generate('app_task_new'));
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
@@ -94,7 +94,7 @@ class TaskControllerTest extends WebTestCase
         $task = $taskRepo->findOneBy(['userId' => $this->getUserFromEmail('user1@example.com')]);
 
         $urlGenerator = $this->client->getContainer()->get('router.default');
-        $crawler = $this->client->request('GET', $urlGenerator->generate('app_task_edit', ['id' => $task->getId()]));
+        $this->client->request('GET', $urlGenerator->generate('app_task_edit', ['id' => $task->getId()]));
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');

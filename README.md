@@ -1,5 +1,4 @@
 # ToDoCo
-# ToDoCo
 
 Présentation
 Dépôt Git de ToDoCo.
@@ -25,7 +24,7 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 [Projet](https://openclassrooms.com/fr/paths/500/projects/44/assignment)
 
 
-## 🧭 Table des matières
+## Table des matières
 
 1. [Prérequis](#prérequis)
 2. [Installation](#installation)
@@ -33,7 +32,7 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
 ---
 
-##  📦 Prérequis
+## Prérequis
 
 -   PHP version 8.3.4 : Le projet est compatible avec PHP8.
 -   composer version 2.7.2 : Assurez-vous que Composer est installé pour gérer les dépendances.
@@ -44,7 +43,7 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 -   Serveur local : Apache ou un serveur équivalent pour exécuter l’application en local.
 ---
 
-## ⚙️ Installation
+## Installation
 
 1. **Cloner le dépôt :** 
 
@@ -54,8 +53,8 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
     ```bash
 
-    - cd projects/
-    - git clone 
+    cd projects/
+    git clone 
     
     ...
 
@@ -63,14 +62,15 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
     ```bash
 
-    - composer install
+    composer install
 
 4. **Installer symfony (voir composer.json)**
 
     ```bash
 
-    - cd my-project/
-    - composer install
+    cd my-project/
+
+    composer install
 
 5. **Variables d'environnement** 
 
@@ -95,6 +95,7 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
     ```bash
 
     php bin/console doctrine:migrations:migrate
+
     php bin/console doctrine:fixtures:load
     
 ---

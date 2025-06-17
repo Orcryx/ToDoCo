@@ -75,8 +75,8 @@ Les tests unitaires et fonctionnels sont implémentés avec PHPunit. Pour lancer
 
 - Après avoir installé le projet sur votre ordinateur local, créez une nouvelle branche selon la nomenclature :
 
-- 'bugfix/' : pour les modifications/bugs
-- 'feature/' : pour une nouvelle fonctionnalité
+  - 'bugfix/' : pour les modifications/bugs
+  - 'feature/' : pour une nouvelle fonctionnalité
 
 - Travaillez sur votre propre branche. N'oubliez pas d'implémenter vos propres tests pour tester votre code.
 
