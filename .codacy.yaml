@@ -1,2 +1,9 @@
-ignore_paths:
-  - tests/
+engines:
+  php_code_sniffer:
+    enabled : true
+    exclude_paths:
+      - tests/
+  phpmd:
+    enabled: true
+    exclude_paths:
+      - tests/
