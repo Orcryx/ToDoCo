@@ -26,7 +26,7 @@ class UserControllerTest extends WebTestCase
         $user = $userRepository->findOneByEmail($email);
 
         if (!$user) {
-            throw new \RuntimeException("L'utilisateur avec l'email $email n'existe pas.");
+            throw new \RuntimeException("L'utilisateur avec l'email n'existe pas.");
         }
 
         $this->client->loginUser($user);
@@ -115,7 +115,7 @@ class UserControllerTest extends WebTestCase
 
     public function testAppProfileUpdateWithValidData(): void
     {
-        $user = $this->loginAs('user1@example.com');
+        $this->loginAs('user1@example.com');
 
         $urlGenerator = $this->client->getContainer()->get('router.default');
         $crawler = $this->client->request(Request::METHOD_GET, $urlGenerator->generate('app_profile'));

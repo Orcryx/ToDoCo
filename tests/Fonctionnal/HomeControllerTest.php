@@ -26,7 +26,7 @@ class HomeControllerTest extends WebTestCase
         $user = $userRepository->findOneByEmail($email);
 
         if (!$user) {
-            throw new \RuntimeException("L'utilisateur avec l'email $email n'existe pas.");
+            throw new \RuntimeException("L'utilisateur avec l'email n'existe pas.");
         }
 
         $this->client->loginUser($user);

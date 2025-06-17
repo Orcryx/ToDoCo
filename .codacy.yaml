@@ -3,7 +3,9 @@ engines:
     enabled : true
     exclude_paths:
       - tests/
+      - migrations/
   phpmd:
     enabled: true
     exclude_paths:
       - tests/
+      - migrations/
