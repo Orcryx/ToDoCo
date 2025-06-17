@@ -45,6 +45,7 @@ class UserRepositoryTest extends KernelTestCase
     {
         $this->expectException(UnsupportedUserException::class);
 
+        /** @var \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface $mock */
         $mock = $this->createMock(\Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface::class);
         $this->repository->upgradePassword($mock, 'irrelevant');
     }
