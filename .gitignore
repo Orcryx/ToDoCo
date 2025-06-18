@@ -7,6 +7,11 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /vendor/
+/var/cache/
+/var/log/
+/var/test/
+/var/tmp/
+/var/*.log
 .env.test
 ###< symfony/framework-bundle ###
 
