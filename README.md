@@ -75,8 +75,13 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 5. **Variables d'environnement** 
 
     Si nécessaire, créer le fichier .env.local (et .env.test) et compléter la value pour la liste des variables suivantes : 
+    (Pour Mailtrap : Remplacer <USERNAME> et <PASSWORD> par les identifiants fournis dans l'interface Mailtrap, dans la section SMTP Settings de ton inbox.)
 
     ```bash
+
+    ###> symfony/mailer ###
+    MAILER_DSN=smtp://<USERNAME>:<PASSWORD>@sandbox.smtp.mailtrap.io:2525
+    ###< symfony/mailer ###
 
     DB_USER=""
     DB_PASSWORD=""
@@ -102,3 +107,8 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
 ## Documentation
 
+    Voir le dossier /documentation :
+
+- [AuditQualitePerformance](/documentation/AuditQualitePerformance.pdf)
+- [GuideAuthentification](/documentation/GuideAuthentification.pdf)
+- [Diagrammes_UML](/documentation/Diagrammes_ToDoCo.pdf)

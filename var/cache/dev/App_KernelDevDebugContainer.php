@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerRxkstsp\App_KernelDevDebugContainer([
     'container.build_hash' => 'Rxkstsp',
-    'container.build_id' => '49a032f2',
-    'container.build_time' => 1750254124,
+    'container.build_id' => 'e7b81804',
+    'container.build_time' => 1750257509,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerRxkstsp');
