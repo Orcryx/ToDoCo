@@ -1,0 +1,3 @@
+<?php //5e250973a7aa49e32a352989712e56cd
+
+return [PHP_INT_MAX, 'images/Logo_OpenClassrooms.png'];
