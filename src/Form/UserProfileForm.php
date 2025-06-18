@@ -23,7 +23,6 @@ class UserProfileForm extends AbstractType
             ->add('email', EmailType::class)
             ->add('username');
 
-        // Champ de mot de passe optionnel
         $builder->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
             'mapped' => false,
@@ -32,7 +31,6 @@ class UserProfileForm extends AbstractType
             'second_options' => ['label' => 'Confirmation'],
         ]);
 
-        // Seuls les admins peuvent voir ce champ
         if ($isAdmin) {
             $builder->add('roles', ChoiceType::class, [
                 'choices' => [

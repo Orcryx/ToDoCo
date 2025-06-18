@@ -5,8 +5,6 @@
 
 {% block body %}
 	<h1>Create new Task</h1>
-
 	{{ include('task/_form.html.twig') }}
-
 	<a href="{{ path('user_task_list') }}">back to list</a>
 {% endblock %}

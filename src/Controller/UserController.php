@@ -18,7 +18,6 @@ final class UserController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
         ]);
@@ -30,14 +29,12 @@ final class UserController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(UserRoleForm::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
             $this->addFlash('success', 'Rôle mis à jour avec succès.');
 
             return $this->redirectToRoute('app_admin');
         }
-
         return $this->render('user/edit.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
@@ -56,18 +53,14 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Gérer le changement de mot de passe
             $plainPassword = $form->get('plainPassword')->getData();
             if ($plainPassword) {
                 $hashed = $hasher->hashPassword($user, $plainPassword);
                 $user->setPassword($hashed);
             }
-
             $user->setUpdatedAt(new \DateTimeImmutable());
             $em->flush();
-
             $this->addFlash('success', 'Profil mis à jour.');
-
             return $this->redirectToRoute('app_profile');
         }
 
