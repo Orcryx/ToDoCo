@@ -33,7 +33,6 @@ class AdminControllerTest extends WebTestCase
     }
 
     public function testAppAdminIsUpWithAdministrator()
-
     {
         $this->loginAs('admin@example.com');
         $urlGenerator = $this->client->getContainer()->get('router.default');

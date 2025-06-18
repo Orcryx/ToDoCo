@@ -2,11 +2,12 @@
 
 namespace App\Tests\Functionel;
 
-use App\Entity\User;
 use App\Entity\Task;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
+
 // use Symfony\Component\HttpFoundation\Response;
 
 class TaskControllerTest extends WebTestCase

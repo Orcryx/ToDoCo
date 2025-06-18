@@ -1,24 +1,15 @@
 <?php
 
-// $finder = (new PhpCsFixer\Finder())
-//     ->in(__DIR__)
-//     ->exclude('var')
-// ;
-
-// return (new PhpCsFixer\Config())
-//     ->setRules([
-//         '@Symfony' => true,
-//     ])
-//     ->setFinder($finder)
-// ;
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/tests');
 
 return (new PhpCsFixer\Config())
+    ->setRiskyAllowed(true)
     ->setRules([
-        '@Symfony' => true,
-        'strict_param' => true,
+        '@PSR12' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'ordered_imports' => true,
+        'no_unused_imports' => true,
     ])
-    ->setFinder(
-        PhpCsFixer\Finder::create()
-            ->in(__DIR__ . '/src')
-            ->in(__DIR__ . '/tests')
-    );
+    ->setFinder($finder);

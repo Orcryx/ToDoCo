@@ -4,8 +4,8 @@ namespace App\Tests\Repository;
 
 use App\Entity\Task;
 use App\Repository\TaskRepository;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TaskRepositoryTest extends KernelTestCase
 {
