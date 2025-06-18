@@ -1,11 +1,3 @@
-engines:
-  php_code_sniffer:
-    enabled : true
-    exclude_paths:
-      - tests/
-      - migrations/
-  phpmd:
-    enabled: true
-    exclude_paths:
-      - tests/
-      - migrations/
+exclude_paths:
+  - "tests/**"
+  - "migrations/**"
