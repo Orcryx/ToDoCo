@@ -28,7 +28,9 @@ Ce projet est développé avec le framework Symfony. Veuillez vous référer à 
 
 Les tests unitaires et fonctionnels sont implémentés avec PHPunit. Pour lancer les tests : 
 
-```php bin/phpunit --coverage-html var/coverage
+```
+php bin/phpunit --coverage-html var/coverage
+
 ```
 
 ## Intégration continue
@@ -73,10 +75,7 @@ Les tests unitaires et fonctionnels sont implémentés avec PHPunit. Pour lancer
 
 - La branche de déploiement du projet est « main ». Veuillez ne jamais y travailler. Commencez toujours par la branche « dev » pour créer une nouvelle branche.
 
-- Après avoir installé le projet sur votre ordinateur local, créez une nouvelle branche selon la nomenclature :
-
-  - 'bugfix/' : pour les modifications/bugs
-  - 'feature/' : pour une nouvelle fonctionnalité
+- Après avoir installé le projet sur votre ordinateur local, créez une nouvelle branche selon la nomenclature du [commit-convetional](https://www.conventionalcommits.org/en/v1.0.0/) 
 
 - Travaillez sur votre propre branche. N'oubliez pas d'implémenter vos propres tests pour tester votre code.
 

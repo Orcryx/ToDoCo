@@ -28,7 +28,8 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
 1. [Prérequis](#prérequis)
 2. [Installation](#installation)
-3. [Documentation](#Documentation)
+3. [Utilisation](#Utilisation)
+4. [Documentation](#Documentation)
 
 ---
 
@@ -51,33 +52,37 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
 2. **Accéder au dossier du projet :**
 
-    ```bash
+    ```
 
     cd projects/
     git clone 
     
-    ...
+    ```
 
 3. **Installer les dépendances avec Composer :**
 
-    ```bash
+    ```
 
     composer install
 
+    ```
+
 4. **Installer symfony (voir composer.json)**
 
-    ```bash
+    ```
 
     cd my-project/
 
     composer install
+
+    ```
 
 5. **Variables d'environnement** 
 
     Si nécessaire, créer le fichier .env.local (et .env.test) et compléter la value pour la liste des variables suivantes : 
     (Pour Mailtrap : Remplacer <USERNAME> et <PASSWORD> par les identifiants fournis dans l'interface Mailtrap, dans la section SMTP Settings de ton inbox.)
 
-    ```bash
+    ```
 
     ###> symfony/mailer ###
     MAILER_DSN=smtp://<USERNAME>:<PASSWORD>@sandbox.smtp.mailtrap.io:2525
@@ -93,22 +98,46 @@ Il ne vous est pas demandé de corriger les points remontés par l’audit de qu
 
     DATABASE_URL="mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?serverVersion=${DB_SERVER_VERSION}&charset=${DB_CHARSET}"
 
+    ```
+
 6. **Fixtures & Migrations**
 
     Effectuer la migrations puis installer les fixtures
 
-    ```bash
+    ```
 
     php bin/console doctrine:migrations:migrate
 
     php bin/console doctrine:fixtures:load
     
----
+    ```
+
+## Utilisation
+
+Pour exécuter le projet :
+   
+``` 
+    - cd my-project/
+    - symfony server:start
+```
+
+Accédez à l’application dans votre navigateur via http://127.0.0.1:8000/
+
+
+Utilisateur :
+
+-   Dev
+    -   ID : admin@example.com
+    -   Mtp : adminpass123
+-   User
+    -   ID : user1@example.com
+    -   Mtp : userpass1
 
 ## Documentation
 
-    Voir le dossier /documentation :
+Voir le dossier /documentation :
 
 - [AuditQualitePerformance](/documentation/AuditQualitePerformance.pdf)
 - [GuideAuthentification](/documentation/GuideAuthentification.pdf)
 - [Diagrammes_UML](/documentation/Diagrammes_ToDoCo.pdf)
+- Fichier HTML de PHPUnit
