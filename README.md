@@ -140,4 +140,4 @@ Voir le dossier /documentation :
 - [AuditQualitePerformance](/documentation/AuditQualitePerformance.pdf)
 - [GuideAuthentification](/documentation/GuideAuthentification.pdf)
 - [Diagrammes_UML](/documentation/Diagrammes_ToDoCo.pdf)
-- Fichier HTML de PHPUnit
+- Fichiers HTML de PHPUnit
