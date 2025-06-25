@@ -37,7 +37,7 @@ class TaskVoter extends Voter
 
         return match ($attribute) {
             self::DELETE => $this->canDelete($task, $user),
-            default => throw new \LogicException('ok!')
+            default => throw new \LogicException('Attribut non pas pris en charge par le TaskVoter.')
         };
     }
 
