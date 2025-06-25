@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted as AttributeIsGranted;
+use App\Security\Voter\TaskVoter;
 
 #[Route('/task')]
 final class TaskController extends AbstractController
@@ -84,17 +85,15 @@ final class TaskController extends AbstractController
     #[Route('/{id}', name: 'app_task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-
-        if ($task->getUserId() !== $user && !$this->isGranted('ROLE_ADMIN')) {
-            throw $this->createAccessDeniedException("Vous n'avez pas le droit de modifier cette tâche.");
-        }
+        // Vérifie l'autorisation via le Voter
+        $this->denyAccessUnlessGranted(TaskVoter::DELETE, $task);
 
         if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
+
+            $this->addFlash('success', 'La tâche a bien été supprimée.');
         }
-        $this->addFlash('success', 'La tâche a bien été supprimée.');
 
         return $this->redirectToRoute('user_task_list', [], Response::HTTP_SEE_OTHER);
     }

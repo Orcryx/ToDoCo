@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 
 class TaskForm extends AbstractType
 {
@@ -16,6 +18,10 @@ class TaskForm extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('isDone', CheckboxType::class, [
+                'label'    => 'Tâche terminée ?',
+                'required' => false,
+            ])
             ->add('userId', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'username',
